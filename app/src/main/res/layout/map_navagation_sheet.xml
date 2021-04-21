@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/baidu_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="百度地图"/>
+
+        <Button
+            android:id="@+id/gaode_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="高德地图"/>
+
+        <Button
+            android:id="@+id/tencent_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="腾讯地图"/>
+
+        <Button
+            android:id="@+id/cancel_btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消"/>
+    </LinearLayout>
+</layout>

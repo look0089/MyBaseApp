@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 相册使用 -->
+    <dimen name="ui_10_dip">10dip</dimen>
+    <dimen name="folder_cover_size">72dp</dimen>
+    <dimen name="image_size">120dp</dimen>
+    <dimen name="space_size">2dp</dimen>
+    <dimen name="one">1dip</dimen>
+    <dimen name="two">2dip</dimen>
+    <dimen name="four">4dip</dimen>
+    <dimen name="eight">8dip</dimen>
+    <dimen name="ten">10dip</dimen>
+    <dimen name="five">5dip</dimen>
+    <dimen name="three">3dip</dimen>
+    <dimen name="thirteen">13dp</dimen>
+    <dimen name="fivety">50dip</dimen>
+    <dimen name="fourty">40dip</dimen>
+    <dimen name="twenty">20dip</dimen>
+    <dimen name="thirty">30dip</dimen>
+    <dimen name="twenty_three">23dp</dimen>
+    <dimen name="twenty_five">25dp</dimen>
+    <dimen name="fifteen">15dip</dimen>
+    <dimen name="zero">0dip</dimen>
+    <dimen name="fifty">50dip</dimen>
+    <dimen name="width_15dp">15dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+</resources>

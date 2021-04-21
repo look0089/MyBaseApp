@@ -1,0 +1,41 @@
+/**
+ * 1、 buildscript里是gradle脚本执行所需依赖，分别是对应的maven库和插件
+ * 2、 allprojects里是项目本身需要的依赖，比如我现在要依赖我自己maven库的toastutils库，
+ *     那么我应该将maven {url ‘https://dl.bintray.com/calvinning/maven‘}写在这里，而不是buildscript中，不然找不到。
+ */
+buildscript {
+    ext {
+        gradleVersion = '4.1.1'
+        kotlin_version = '1.3.72'
+        //support版本号
+        supportLibVersion = '28.0.0'
+        lifecycle_version = '2.2.0'
+    }
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven {
+            url 'https://dl.google.com/dl/android/maven2/'
+        }
+        jcenter()
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:stv="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <org.jzs.mybaseapp.common.widget.VideoViewFullScreen
+        android:id="@+id/videoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <com.allen.library.SuperButton
+        android:id="@+id/tv_skip"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:text="跳过"
+        android:textColor="@color/txt_hint"
+        android:textSize="12sp"
+        stv:sCornersRadius="3dp"
+        stv:sSelectorPressedColor="@color/gray"
+        stv:sSolidColor="#40bbbbbb"
+        />
+
+</FrameLayout>

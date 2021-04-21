@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View.OnClickListener" />
+
+        <variable
+            name="CoinClickable"
+            type="boolean" />
+
+        <variable
+            name="tipVisibility"
+            type="int" />
+
+        <variable
+            name="back"
+            type="OnClickListener" />
+
+        <variable
+            name="front"
+            type="OnClickListener" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/layout_time"
+            layout="@layout/coin_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp" />
+
+        <FrameLayout
+            android:id="@+id/root"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_above="@+id/tv_tip"
+            android:layout_centerHorizontal="true"
+            android:clickable="@{CoinClickable}"
+            tools:context=".MainActivity">
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ctimg_chinacointails" />
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ctimg_chinacoinheads" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:text="点击抛硬币"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="当你抛完一次后，还想再抛一次的时候，答案就出现了"
+            android:visibility="@{tipVisibility}" />
+    </RelativeLayout>
+
+
+</layout>
+

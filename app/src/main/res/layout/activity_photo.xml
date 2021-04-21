@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="open"
+                android:text="打开相册" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="set"
+                android:text="设置文字" />
+
+            <TextView
+                android:id="@+id/sour_pic_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="原图" />
+
+            <ImageView
+                android:id="@+id/sour_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:id="@+id/watermark_pic_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水印" />
+
+            <ImageView
+                android:id="@+id/wartermark_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside" />
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="save"
+                android:text="把水印圖储存到手机" />
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

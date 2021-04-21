@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="自定义控件和动画效果"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap">
+
+            <Button
+                android:id="@+id/btn_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时间选择器" />
+
+            <Button
+                android:id="@+id/btn_select_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="图片选择器" />
+
+            <Button
+                android:id="@+id/btn_leonids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="粒子效果" />
+
+            <Button
+                android:id="@+id/btn_anime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="动画" />
+
+            <Button
+                android:id="@+id/btn_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="遙控器"
+                android:visibility="gone" />
+
+
+            <Button
+                android:id="@+id/btn_permission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="权限获取" />
+
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="例子demo"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap">
+
+            <Button
+                android:id="@+id/btn_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="唤起外部地图" />
+
+            <Button
+                android:id="@+id/btn_mpchart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="mpchart曲线图" />
+
+            <Button
+                android:id="@+id/btn_curve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="曲线图" />
+
+            <Button
+                android:id="@+id/btn_dao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="greenDAO数据库" />
+
+
+            <Button
+                android:id="@+id/btn_ximalaya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="喜马拉雅SDK" />
+
+            <Button
+                android:id="@+id/btn_glide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="圆角图片加载" />
+
+            <Button
+                android:id="@+id/btn_live_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="live data" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="其他功能"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap">
+
+
+            <Button
+                android:id="@+id/btn_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="蓝牙连接" />
+
+
+            <Button
+                android:id="@+id/btn_vpn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="创建VPN" />
+
+
+            <Button
+                android:id="@+id/btn_utils"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="myUtils"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_system_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取通知栏内容" />
+
+            <Button
+                android:id="@+id/btn_retrofit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="retrofit例子"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_waterpic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水印图片" />
+
+            <Button
+                android:id="@+id/btn_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水印相机" />
+
+            <Button
+                android:id="@+id/btn_packinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取手机应用列表" />
+
+            <Button
+                android:id="@+id/btn_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="抛硬币" />
+
+            <Button
+                android:id="@+id/btn_ei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EI 人脸识别" />
+
+            <Button
+                android:id="@+id/btn_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="直播视频" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <TextView
+            android:id="@+id/tv_eum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>
+

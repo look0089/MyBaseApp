@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/root_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/cam_focus"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="次数："/>
+
+        <TextView
+            android:id="@+id/tv_front_rate"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_height="wrap_content"
+            android:text="正面几率："/>
+
+        <TextView
+            android:id="@+id/tv_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_front_rate"
+            android:layout_marginRight="10dp"
+            android:text="正面："/>
+
+        <TextView
+            android:id="@+id/tv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_front_rate"
+            android:layout_toRightOf="@+id/tv_front"
+            android:text="反面："/>
+
+        <Button
+            android:id="@+id/btn_clean"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tv_back"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_login"
+            android:text="清空计数"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+</layout>

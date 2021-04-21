@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.content.pm.PackageInfo"/>
+
+        <variable
+            name="data"
+            type="com.ximalaya.ting.android.opensdk.model.category.Category"/>
+
+
+        <variable
+            name="itemP"
+            type="org.jzs.mybaseapp.section.demo.ximalaya.XimalayaActivity.SingleItemPresenter"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{v->itemP.onItemClick(data)}"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="10dp"
+            tools:src="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/tv_package_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="@{data.categoryName}"
+            android:textSize="18sp"
+            tools:text="@string/app_name"/>
+
+    </RelativeLayout>
+</layout>
+

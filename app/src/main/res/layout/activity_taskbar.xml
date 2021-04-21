@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonAssesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AccSet"/>
+
+            <Button
+                android:id="@+id/buttonStartNofi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="StartNF"/>
+
+            <Button
+                android:id="@+id/buttonClearView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ClearViews"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/root_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

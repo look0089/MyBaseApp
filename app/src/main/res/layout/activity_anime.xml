@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg"
+            android:orientation="vertical">
+
+            <org.jzs.mybaseapp.section.weightdemo.anime.view.RemoteControlMenu
+                android:id="@+id/menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="点击按钮气泡箭头指向对应按钮中心,随机圆角角度:" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn1"
+                    android:text="一" />
+
+                <Button
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn2"
+                    android:text="二" />
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn3"
+                    android:text="三" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="btn4"
+                    android:text="四" />
+            </LinearLayout>
+
+            <org.jzs.mybaseapp.section.weightdemo.anime.view.CursorView
+                android:id="@+id/cursorview"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="自定义view,变化的播放倒计时按钮:" />
+
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/shape_gray_radius"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="►"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="自定义view,画一个圈:" />
+
+            <org.jzs.mybaseapp.section.weightdemo.anime.view.YuanView
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="自定义view写一行字:" />
+
+            <org.jzs.mybaseapp.section.weightdemo.anime.view.CustomTextView
+                android:id="@+id/textview"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="水波控件:" />
+
+            <org.jzs.mybaseapp.section.weightdemo.anime.view.WaveView
+                android:id="@+id/wave"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

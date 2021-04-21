@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!--必须取名data才能使用databinding自动套用数据-->
+        <variable
+            name="data"
+            type="org.jzs.mybaseapp.common.base.BaseEntity" />
+
+        <variable
+            name="itemP"
+            type="org.jzs.mybaseapp.common.base.ListActivity.SingleItemPresenter" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:onClick="@{v->itemP.onItemClick(data,position)}">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="商品名称"
+            tools:text="商品名称" />
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:onClick="@{v->itemP.onBuyClick(data)}"
+            android:text="立即购买"
+            app:layout_constraintLeft_toRightOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
