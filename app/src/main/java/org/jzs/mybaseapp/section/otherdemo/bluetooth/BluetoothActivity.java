@@ -2,7 +2,9 @@ package org.jzs.mybaseapp.section.otherdemo.bluetooth;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,22 +32,19 @@ public class BluetoothActivity extends AppCompatActivity {
         Button switchBT = (Button) this.findViewById(R.id.openBluetooth_tb);
         Button searchDevices = (Button) this.findViewById(R.id.searchDevices);
 
-        BluetoothAction bluetoothAction = new BluetoothAction(this.context, unbondDevices, bondDevices, switchBT, searchDevices, BluetoothActivity.this);
+        BluetoothAction bluetoothAction = new BluetoothAction(this.context,
+                unbondDevices,
+                bondDevices,
+                switchBT,
+                searchDevices,
+                BluetoothActivity.this);
         Button returnButton = (Button) this.findViewById(R.id.return_Bluetooth_btn);
+
         bluetoothAction.setSearchDevices(searchDevices);
         bluetoothAction.initView();
 
         switchBT.setOnClickListener(bluetoothAction);
         searchDevices.setOnClickListener(bluetoothAction);
         returnButton.setOnClickListener(bluetoothAction);
-    }
-
-    //屏蔽返回键的代码:
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                return true;
-        }
-        return super.onKeyDown(keyCode, event);
     }
 }

@@ -19,7 +19,9 @@ public class PrintDataService {
     private BluetoothDevice device = null;
     private static BluetoothSocket bluetoothSocket = null;
     private static OutputStream outputStream = null;
+
     private static final UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+//    private static final UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
     private boolean isConnection = false;
     final String[] items = {"复位打印机", "标准ASCII字体", "压缩ASCII字体", "字体不放大",
             "宽高加倍", "取消加粗模式", "选择加粗模式", "取消倒置打印", "选择倒置打印", "取消黑白反显", "选择黑白反显",

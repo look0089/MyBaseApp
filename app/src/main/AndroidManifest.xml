@@ -70,7 +70,7 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
-        android:smallScreens="true"/>
+        android:smallScreens="true" />
 
 
     <application
@@ -111,7 +111,7 @@
         <activity android:name=".section.otherdemo.notification.NotifiActivity" />
         <activity android:name=".section.otherdemo.vpn.VPNActivity" />
         <activity android:name="org.jzs.mybaseapp.section.weightdemo.photo.SelectPhotoActivity" />
-        <activity android:name=".section.otherdemo.bluetooth.BluetoothActivity" />
+        <activity android:name=".section.otherdemo.bluetooth.BluetoothActivity"></activity>
         <activity android:name=".section.otherdemo.bluetooth.PrintDataActivity" />
         <activity
             android:name=".section.live.LiveActivity"
@@ -129,6 +129,9 @@
                 <action android:name="android.net.VpnService" />
             </intent-filter>
         </service>
+        <service
+            android:name=".section.otherdemo.ble.BLEService"
+            android:process=":ble_service" />
         <service
             android:name=".section.otherdemo.notification.NotificationCollectorMonitorService"
             android:process=":nls_service" />
@@ -185,7 +188,21 @@
         <activity android:name=".section.weightdemo.anime.AnimeActivity" />
         <activity android:name=".section.demo.test.LiveDataActivity" />
         <activity android:name=".section.otherdemo.video.gsy.PlayActivity" />
+        <activity android:name=".section.otherdemo.nrf.nRFConnectActivity"></activity>
+        <activity android:name=".section.otherdemo.nrf.DetailActivity">
 
+        </activity>
+        <activity android:name=".section.otherdemo.xinzhongxin.bletester.MainActivity">
+
+        </activity>
+        <activity android:name=".section.otherdemo.xinzhongxin.bletester.DeviceConnect" />
+        <activity android:name=".section.otherdemo.xinzhongxin.bletester.QrcodeActivity" />
+        <activity android:name=".section.otherdemo.xinzhongxin.bletester.AboutActivity" />
+        <activity android:name=".section.otherdemo.xinzhongxin.bletester.ChangeCharActivity" />
+        <activity android:name=".section.otherdemo.xinzhongxin.bletester.CharacterisiticActivity" />
+        <activity android:name=".section.otherdemo.nrf.SendActivity" />
+
+        <service android:name=".section.otherdemo.xinzhongxin.service.BleService"></service>
         <!--喜马拉雅SDK配置-->
         <meta-data
             android:name="app_key"

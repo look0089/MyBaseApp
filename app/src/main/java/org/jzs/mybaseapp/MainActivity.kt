@@ -13,7 +13,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jzs.mybaseapp.common.utils.DateFormatUtils
-import org.jzs.mybaseapp.section.weightdemo.permission.PermissionListener
 import org.jzs.mybaseapp.section.weightdemo.permission.PermissionUtils
 import org.jzs.mybaseapp.common.utils.ToastUtils
 import org.jzs.mybaseapp.databinding.ActivityMainBinding
@@ -36,6 +35,7 @@ import org.jzs.mybaseapp.section.otherdemo.waterpic.PhotoActivity
 import org.jzs.mybaseapp.section.otherdemo.waterpic.ViewDragActivity
 import org.jzs.mybaseapp.section.weightdemo.anime.AnimeActivity
 import org.jzs.mybaseapp.section.demo.ximalaya.XimalayaActivity
+import org.jzs.mybaseapp.section.otherdemo.nrf.DetailActivity
 import org.jzs.mybaseapp.section.otherdemo.video.gsy.PlayActivity
 
 /**
@@ -80,19 +80,19 @@ class MainActivity : AppCompatActivity() {
                 displayList.add(DateTimeConfig.MIN)
                 displayList.add(DateTimeConfig.SECOND)
                 CardDatePickerDialog.builder(this@MainActivity)
-                        .setTitle("选择开始时间")
-                        .setDisplayType(displayList)
-                        .setBackGroundModel(CardDatePickerDialog.CARD)
-                        .setDefaultTime(System.currentTimeMillis())
-                        .showBackNow(true)
-                        .setWrapSelectorWheel(true)
-                        .showDateLabel(true)
-                        .showFocusDateInfo(true)
-                        .setOnChoose("选择") {
-                            ToastUtils.showToast(DateFormatUtils.timestampToDate(it, "yyyy-MM-dd HH:mm:ss"))
-                        }
-                        .setOnCancel("关闭") {
-                        }.build().show()
+                    .setTitle("选择开始时间")
+                    .setDisplayType(displayList)
+                    .setBackGroundModel(CardDatePickerDialog.CARD)
+                    .setDefaultTime(System.currentTimeMillis())
+                    .showBackNow(true)
+                    .setWrapSelectorWheel(true)
+                    .showDateLabel(true)
+                    .showFocusDateInfo(true)
+                    .setOnChoose("选择") {
+                        ToastUtils.showToast(DateFormatUtils.timestampToDate(it, "yyyy-MM-dd HH:mm:ss"))
+                    }
+                    .setOnCancel("关闭") {
+                    }.build().show()
 
             }
             //图片选择器
@@ -102,11 +102,11 @@ class MainActivity : AppCompatActivity() {
             //例子效果
             btnLeonids.setOnClickListener {
                 ParticleSystem(this@MainActivity, 100, R.drawable.star_on, 3000)
-                        .setSpeedModuleAndAngleRange(0.05f, 0.2f, 0, 360)
-                        .setRotationSpeed(30f)
-                        .setAcceleration(0f, 360)
-                        .setFadeOut(3000)
-                        .oneShot(mBinding.btnLeonids, 200)
+                    .setSpeedModuleAndAngleRange(0.05f, 0.2f, 0, 360)
+                    .setRotationSpeed(30f)
+                    .setAcceleration(0f, 360)
+                    .setFadeOut(3000)
+                    .oneShot(mBinding.btnLeonids, 200)
             }
             //动画
             btnAnime.setOnClickListener {
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         mBinding.apply {
             //唤起外部地图
             btnMap.setOnClickListener {
-                PermissionUtils.requestLocation(this@MainActivity, PermissionListener {
+                PermissionUtils.requestLocation(this@MainActivity, {
                     startActivity(Intent(this@MainActivity, MapActivity::class.java))
                 })
             }
@@ -173,17 +173,20 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, Coin2Activity::class.java))
             }
             btnEi.setOnClickListener {
-                PermissionUtils.requestCamera(this@MainActivity, PermissionListener {
+                PermissionUtils.requestCamera(this@MainActivity) {
                     startActivity(Intent(this@MainActivity, EIFaceActivity::class.java))
-                })
+                }
             }
             btnPackinfo.setOnClickListener {
                 startActivity(Intent(this@MainActivity, PackInfoActivity::class.java))
             }
             btnVideo.setOnClickListener {
-                PermissionUtils.requestStorage(this@MainActivity, PermissionListener {
+                PermissionUtils.requestStorage(this@MainActivity) {
                     startActivity(Intent(this@MainActivity, PlayActivity::class.java))
-                })
+                }
+            }
+            btnBle.setOnClickListener {
+                startActivity(Intent(this@MainActivity, DetailActivity::class.java))
             }
         }
     }

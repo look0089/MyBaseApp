@@ -154,7 +154,6 @@ public class BluetoothService {
      */
     public boolean isOpen() {
         return this.bluetoothAdapter.isEnabled();
-
     }
 
     /**
