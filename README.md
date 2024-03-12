@@ -1,8 +1,29 @@
 ## my base app
+2024-3-12 13:49:32
+适配SDK 33
+kotlin 版本 1.8.10
+jvm 17
+使用框架:
+viewmodel
+livedata
+glide
+eventbus
+retrofit
+
+使用第三方库
+PhotoView
+SuperTextView 
+PictureSelector
+MPAndroidChart 图表
+LeonidsLib 粒子效果
+easy-protector-release 检测模拟器
+rxpermissions
+gsyVideoPlayer
+SmartRefreshLayout
+
 2021年4月21日10:46:31
-好久没更新了,但这个项目一直作为个人的例子在使用
-用到的东西也越来越多
-强制提交一波
+更新提交
+
 
 2017年11月6日      
 目前已完成的：       
@@ -63,25 +84,5 @@ aii1991 [RetrofitDemo](https://github.com/aii1991/RetrofitDemo)
 ***
 2017-7-19 14:42:43
 做一个自己的app
-
-目前第一步先把一些常用的工具和参数设置好
-
-现在还欠缺的东西：   
-无滚动的listview gridview recyleview   
-可缩放的图片查看器   
-显示圆形的imageview   
-无限循环的banner   
-二维码扫一扫、生成二维码、二维码中间加logo   
-发送验证码倒计时   
-图片选择器（选择第三方）   
-拼音分组list    
-多层树状list    
-
-
-okhttp+retrofit 网络请求
-glide 图片管理
-superAdapter 通用适配器
-SmartRefreshLayout 智能刷新
-GSYVideoPlayer 视频播放器
 
 
