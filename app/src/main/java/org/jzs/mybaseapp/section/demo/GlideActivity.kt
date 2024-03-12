@@ -21,7 +21,8 @@ class GlideActivity : AppCompatActivity() {
 
     lateinit var mBinding: ActivityGlideBinding
 
-    val bigPic: String = "http://img1.3lian.com/2015/a1/34/d/119.jpg"
+//    val bigPic: String = "https://lmg.jj20.com/up/allimg/1112/012019115430/1Z120115430-7-1200.jpg"
+    val bigPic: String = "https://www.baidu.com/img/bd_logo1.png"
     val baiduLogo: String = "https://www.baidu.com/img/bd_logo1.png"
 
     override fun onCreate(savedInstanceState: Bundle?) {

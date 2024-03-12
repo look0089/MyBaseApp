@@ -10,7 +10,7 @@ import java.util.Locale;
 public class DateUtil {
 
 	public static String getCurrentDatatime() {
-		SimpleDateFormat df = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return df.format(new Date());
 	}
 

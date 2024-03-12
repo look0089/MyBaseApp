@@ -29,6 +29,12 @@
                 android:text="时间选择器" />
 
             <Button
+                android:id="@+id/btn_large_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="大图显示" />
+
+            <Button
                 android:id="@+id/btn_select_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +66,12 @@
                 android:layout_height="wrap_content"
                 android:text="权限获取" />
 
+            <Button
+                android:id="@+id/btn_oom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OOM测试" />
+
 
         </com.google.android.flexbox.FlexboxLayout>
 
@@ -86,20 +98,7 @@
                 android:id="@+id/btn_mpchart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="mpchart曲线图" />
-
-            <Button
-                android:id="@+id/btn_curve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="曲线图" />
-
-            <Button
-                android:id="@+id/btn_dao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="greenDAO数据库" />
-
+                android:text="mpchart图表" />
 
             <Button
                 android:id="@+id/btn_ximalaya"
@@ -138,7 +137,7 @@
                 android:id="@+id/btn_blue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="蓝牙连接" />
+                android:text="BLE蓝牙连接" />
 
 
             <Button
@@ -192,11 +191,6 @@
                 android:layout_height="wrap_content"
                 android:text="抛硬币" />
 
-            <Button
-                android:id="@+id/btn_ei"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EI 人脸识别" />
 
             <Button
                 android:id="@+id/btn_video"
@@ -204,11 +198,6 @@
                 android:layout_height="wrap_content"
                 android:text="直播视频" />
 
-            <Button
-                android:id="@+id/btn_ble"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BLE蓝牙" />
         </com.google.android.flexbox.FlexboxLayout>
 
         <TextView

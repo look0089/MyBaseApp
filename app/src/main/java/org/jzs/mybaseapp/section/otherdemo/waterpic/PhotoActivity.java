@@ -16,11 +16,13 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 
 import org.jzs.mybaseapp.R;
+import org.jzs.mybaseapp.common.utils.AppLog;
 import org.jzs.mybaseapp.common.utils.MediaScannerUtils;
 import org.jzs.mybaseapp.common.utils.ToastUtils;
 import org.jzs.mybaseapp.common.utils.glide.GlideEngine;
@@ -100,16 +102,25 @@ public class PhotoActivity extends AppCompatActivity {
 
     public void open(View v) {
         if (mList.size() == 0) {
-            ToastUtils.showToast("请先设置文字");
-            return;
+            for (int i = 0; i < 5; i++) {
+                PhotoEntity photoEntity = new PhotoEntity();
+                photoEntity.title = "项目" + i;
+                photoEntity.content = "内容" + i;
+                mList.add(photoEntity);
+            }
         }
         PictureSelector.create(this)
                 .openGallery(PictureMimeType.ofImage())
+                .selectionMode(PictureConfig.SINGLE)
+                .isCompress(true)
+                .isGif(false)
                 .imageEngine(GlideEngine.createGlideEngine())
+                .isAndroidQTransform(false)
                 .forResult(new OnResultCallbackListener<LocalMedia>() {
                     @Override
                     public void onResult(List<LocalMedia> result) {
-                        File f = new File(result.get(0).getPath().replace("sdcard://", ""));
+                        AppLog.e("imagePath", result.get(0).getCompressPath());
+                        File f = new File(result.get(0).getCompressPath().replace("sdcard://", ""));
                         Glide.with(PhotoActivity.this).load(f).override(600, 600).into(mSourImage);
                         try {
                             Uri uri = Uri.fromFile(f);

@@ -34,8 +34,6 @@ public class MapActivity extends AppCompatActivity {
     private Circle mAccuracyCircle;
 
     private Marker showMarker;
-    private PopupWindow mBottomSheetPop;
-    private View mapSheetView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

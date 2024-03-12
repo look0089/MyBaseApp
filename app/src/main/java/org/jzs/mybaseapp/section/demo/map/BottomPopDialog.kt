@@ -80,6 +80,10 @@ class BottomPopDialog(context: Context?) : Dialog(context!!, R.style.custom_dial
             }
             dismiss()
         }
+
+        binding.cancelBtn2.setOnClickListener {
+            dismiss()
+        }
     }
 
     fun isAppInstalled(context: Context, packageName: String): Boolean {

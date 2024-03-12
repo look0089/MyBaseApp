@@ -49,8 +49,7 @@ public class WaterImageUtil {
                 dp2px(context, paddingLeft), dp2px(context, paddingTop));
     }
 
-    private static Bitmap createWaterMaskBitmap(Bitmap src, Bitmap watermark,
-                                                int paddingLeft, int paddingTop) {
+    private static Bitmap createWaterMaskBitmap(Bitmap src, Bitmap watermark, int paddingLeft, int paddingTop) {
         if (src == null) {
             return null;
         }

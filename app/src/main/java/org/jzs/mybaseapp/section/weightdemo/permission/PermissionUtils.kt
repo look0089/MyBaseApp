@@ -2,6 +2,7 @@ package org.jzs.mybaseapp.section.weightdemo.permission
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.os.Build
 import androidx.fragment.app.FragmentActivity
 import com.tbruyelle.rxpermissions2.RxPermissions
 
@@ -21,14 +22,14 @@ object PermissionUtils {
     @JvmStatic
     fun requestCustom(activity: FragmentActivity, permissions: String?, l: PermissionListener) {
         RxPermissions(activity)
-                .request(permissions)
-                .subscribe { granted ->
-                    if (granted!!) {
-                        l.onSuccess()
-                    } else {
-                        PermissionDialog(activity).show()
-                    }
+            .request(permissions)
+            .subscribe { granted ->
+                if (granted!!) {
+                    l.onSuccess()
+                } else {
+                    PermissionDialog(activity).show()
                 }
+            }
     }
 
     /**
@@ -37,14 +38,14 @@ object PermissionUtils {
     @JvmStatic
     fun requestCamera(a: FragmentActivity, listener: PermissionListener) {
         RxPermissions(a)
-                .request(Manifest.permission.CAMERA)
-                .subscribe { granted ->
-                    if (granted!!) {
-                        listener.onSuccess()
-                    } else {
-                        PermissionDialog(a).show()
-                    }
+            .request(Manifest.permission.CAMERA)
+            .subscribe { granted ->
+                if (granted!!) {
+                    listener.onSuccess()
+                } else {
+                    PermissionDialog(a).show()
                 }
+            }
     }
 
     /**
@@ -54,16 +55,18 @@ object PermissionUtils {
     @JvmStatic
     fun requestCameraAndStorage(a: FragmentActivity, listener: PermissionListener) {
         RxPermissions(a)
-                .request(Manifest.permission.CAMERA,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)
-                .subscribe { granted ->
-                    if (granted) {
-                        listener.onSuccess()
-                    } else {
-                        PermissionDialog(a).show()
-                    }
+            .request(
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .subscribe { granted ->
+                if (granted) {
+                    listener.onSuccess()
+                } else {
+                    PermissionDialog(a).show()
                 }
+            }
     }
 
     /**
@@ -72,15 +75,17 @@ object PermissionUtils {
     @JvmStatic
     fun requestLocation(a: FragmentActivity, l: PermissionListener) {
         RxPermissions(a)
-                .request(Manifest.permission.ACCESS_FINE_LOCATION,
-                        Manifest.permission.ACCESS_COARSE_LOCATION)
-                .subscribe { granted ->
-                    if (granted!!) {
-                        l.onSuccess()
-                    } else {
-                        PermissionDialog(a).show()
-                    }
+            .request(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+            .subscribe { granted ->
+                if (granted!!) {
+                    l.onSuccess()
+                } else {
+                    PermissionDialog(a).show()
                 }
+            }
     }
 
     /**
@@ -90,15 +95,17 @@ object PermissionUtils {
     @JvmStatic
     fun requestStorage(a: FragmentActivity, l: PermissionListener) {
         RxPermissions(a)
-                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)
-                .subscribe { granted ->
-                    if (granted!!) {
-                        l.onSuccess()
-                    } else {
-                        PermissionDialog(a).show()
-                    }
+            .request(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
+            .subscribe { granted ->
+                if (granted!!) {
+                    l.onSuccess()
+                } else {
+                    PermissionDialog(a).show()
                 }
+            }
     }
 
     /**
@@ -107,15 +114,43 @@ object PermissionUtils {
     @JvmStatic
     fun requestPhone(a: FragmentActivity, l: PermissionListener) {
         RxPermissions(a)
-                .request(Manifest.permission.CALL_PHONE)
-                .subscribe { granted ->
-                    if (granted!!) {
-                        l.onSuccess()
-                    } else {
-                        PermissionDialog(a).show()
-                    }
+            .request(Manifest.permission.CALL_PHONE)
+            .subscribe { granted ->
+                if (granted!!) {
+                    l.onSuccess()
+                } else {
+                    PermissionDialog(a).show()
                 }
+            }
     }
 
+    fun requestBlePermission(a: FragmentActivity, listener: PermissionListener) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            RxPermissions(a)
+                .request(
+                    Manifest.permission.BLUETOOTH_SCAN,
+                    Manifest.permission.BLUETOOTH_ADVERTISE,
+                    Manifest.permission.BLUETOOTH_CONNECT,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+                .subscribe { granted ->
+                    if (granted) {
+                        listener.onSuccess()
+                    }
+                }
+        } else {
+            RxPermissions(a)
+                .request(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+                .subscribe { granted ->
+                    if (granted) {
+                        listener.onSuccess()
+                    }
+                }
+        }
+    }
 }
 

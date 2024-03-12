@@ -37,7 +37,6 @@ public class DeviceConnect extends AppCompatActivity {
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
-
     public static final String FIND_DEVICE_ALARM_ON = "find.device.alarm.on";
     public static final String DISCONNECT_DEVICE = "find.device.disconnect";
     public static final String CANCEL_DEVICE_ALARM = "find.device.cancel.alarm";

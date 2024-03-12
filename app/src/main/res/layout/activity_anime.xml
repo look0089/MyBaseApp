@@ -91,6 +91,13 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp" />
 
+            <org.jzs.mybaseapp.section.weightdemo.anime.view.LoadingButton
+                android:id="@+id/btn_load"
+                android:layout_width="wrap_content"
+                android:background="@color/deep_blue"
+                android:text="启动"
+                android:layout_height="100dp"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -26,12 +26,16 @@ import android.widget.AdapterView.OnItemClickListener;
 
 
 import org.jzs.mybaseapp.R;
+import org.jzs.mybaseapp.section.otherdemo.nrf.DetailActivity;
 import org.jzs.mybaseapp.section.otherdemo.xinzhongxin.adapter.BleDeviceListAdapter;
 import org.jzs.mybaseapp.section.otherdemo.xinzhongxin.utils.Utils;
+import org.jzs.mybaseapp.section.weightdemo.permission.PermissionListener;
+import org.jzs.mybaseapp.section.weightdemo.permission.PermissionUtils;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     ListView listView;
     SwipeRefreshLayout swagLayout;
     BluetoothAdapter mBluetoothAdapter;
@@ -54,14 +58,13 @@ public class MainActivity extends Activity {
         init();
         getBleAdapter();
         getScanResualt();
-        new Thread(new Runnable() {
+        PermissionUtils.requestLocation(this, () -> new Thread(new Runnable() {
             @SuppressWarnings("deprecation")
             @Override
             public void run() {
-                // TODO Auto-generated method stub
                 mBluetoothAdapter.startLeScan(mLeScanCallback);
             }
-        }).start();
+        }).start());
     }
 
     private void init() {
@@ -89,8 +92,7 @@ public class MainActivity extends Activity {
 
     @SuppressLint("NewApi")
     private void getBleAdapter() {
-        final BluetoothManager bluetoothManager = (BluetoothManager) this
-                .getSystemService(Context.BLUETOOTH_SERVICE);
+        final BluetoothManager bluetoothManager = (BluetoothManager) this.getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
     }
 
@@ -98,14 +100,14 @@ public class MainActivity extends Activity {
     private void getScanResualt() {
         mLeScanCallback = new LeScanCallback() {
             @Override
-            public void onLeScan(final BluetoothDevice device, final int rssi,
-                                 final byte[] scanRecord) {
+            public void onLeScan(final BluetoothDevice device, final int rssi, final byte[] scanRecord) {
                 MainActivity.this.runOnUiThread(new Runnable() {
                     public void run() {
-                        mBleDeviceListAdapter.addDevice(device, rssi,
-                                Utils.bytesToHex(scanRecord));
-                        mBleDeviceListAdapter.notifyDataSetChanged();
-                        invalidateOptionsMenu();
+                        if (device.getName() != null) {
+                            mBleDeviceListAdapter.addDevice(device, rssi, Utils.bytesToHex(scanRecord));
+                            mBleDeviceListAdapter.notifyDataSetChanged();
+                            invalidateOptionsMenu();
+                        }
                     }
                 });
             }
@@ -116,11 +118,10 @@ public class MainActivity extends Activity {
         listView.setOnItemClickListener(new OnItemClickListener() {
             @SuppressLint("NewApi")
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // TODO Auto-generated method stub
                 BluetoothDevice device = mBleDeviceListAdapter.getDevice(position);
-                final Intent intent = new Intent(MainActivity.this, DeviceConnect.class);
+                final Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra(DeviceConnect.EXTRAS_DEVICE_NAME, device.getName());
                 intent.putExtra(DeviceConnect.EXTRAS_DEVICE_ADDRESS, device.getAddress());
                 startActivity(intent);
@@ -173,36 +174,11 @@ public class MainActivity extends Activity {
                 }
                 break;
             case R.id.menu_about:
-                MainActivity.this.startActivity(new Intent(this,
-                        AboutActivity.class));
+                MainActivity.this.startActivity(new Intent(this, AboutActivity.class));
             case R.id.menu_qrcode:
-                MainActivity.this.startActivity(new Intent(this,
-                        QrcodeActivity.class));
+                MainActivity.this.startActivity(new Intent(this, QrcodeActivity.class));
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            exitBy2Click();
-        }
-        return false;
-    }
-
-    private void exitBy2Click() {
-        if (!isExit) {
-            isExit = true;
-            Toast.makeText(this, "再按一次退出", Toast.LENGTH_SHORT).show();
-            new Timer().schedule(new TimerTask() {
-                public void run() {
-                    isExit = false;
-                }
-            }, 2000);
-        } else {
-            onDestroy();
-            finish();
-            System.exit(0);
-        }
     }
 
 }

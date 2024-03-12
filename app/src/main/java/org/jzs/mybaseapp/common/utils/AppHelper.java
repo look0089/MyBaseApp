@@ -8,14 +8,12 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Rect;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.view.WindowManager;
 
-import org.jzs.mybaseapp.BuildConfig;
 import org.jzs.mybaseapp.common.system.AppConfig;
 
 import java.io.File;
@@ -28,6 +26,8 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.util.Enumeration;
 import java.util.List;
+
+import androidx.multidex.BuildConfig;
 
 /**
  * Title: 获取 APP 信息和 手机信息工具类

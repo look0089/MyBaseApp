@@ -41,12 +41,13 @@ public class TencentLocationUtils {
          * REQ_LEVEL_POI	4	包含经纬度，位置所处的中国大陆行政区划及周边POI列表
          */
         request.setRequestLevel(1);
-        request.isAllowCache();//设置是否允许使用缓存, 连续多次定位时建议允许缓存
+//        request.isAllowCache();//设置是否允许使用缓存, 连续多次定位时建议允许缓存
 //        request.setQQ()
 
         tencentLocationListener = new TencentLocationListener() {
             @Override
             public void onLocationChanged(TencentLocation location, int error, String reason) {
+                AppLog.e("TencentLocation", location + ";" + error + ";" + reason);
                 /**
                  * 位置回调接口
                  * location	新的位置
@@ -79,6 +80,7 @@ public class TencentLocationUtils {
                  * status	新的状态, 启用或禁用
                  * desc	状态描述
                  */
+                AppLog.e("TencentLocation", name + ";" + desc + ";" + status);
             }
         };
 

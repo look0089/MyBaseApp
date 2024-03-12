@@ -87,8 +87,7 @@ public class CharacterisiticActivity extends Activity {
                 CharacterisiticActivity.this.invalidateOptionsMenu();
             }
             if (BleService.ACTION_GATT_DISCONNECTED.equals(action)) {
-                Toast.makeText(CharacterisiticActivity.this, "设备连接断开",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(CharacterisiticActivity.this, "设备连接断开", Toast.LENGTH_SHORT).show();
                 bleService.connect(DeviceConnect.bleAddress);
             }
         }
@@ -128,12 +127,9 @@ public class CharacterisiticActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
                 Intent mIntent = new Intent(CharacterisiticActivity.this, ChangeCharActivity.class);
-                UUID charUuid = bleService.mBluetoothGatt.getService(uuid)
-                        .getCharacteristics().get(position).getUuid();
+                UUID charUuid = bleService.mBluetoothGatt.getService(uuid).getCharacteristics().get(position).getUuid();
                 mIntent.putExtra("charUUID", charUuid);
-                mIntent.putExtra("properties", bleService.mBluetoothGatt
-                        .getService(uuid).getCharacteristics().get(position)
-                        .getProperties());
+                mIntent.putExtra("properties", bleService.mBluetoothGatt.getService(uuid).getCharacteristics().get(position).getProperties());
                 mIntent.putExtra("serUUID", uuid);
                 startActivity(mIntent);
             }

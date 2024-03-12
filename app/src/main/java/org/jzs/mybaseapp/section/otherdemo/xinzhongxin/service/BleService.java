@@ -106,8 +106,7 @@ public class BleService extends Service {
         }
 
         @Override
-        public void onCharacteristicRead(BluetoothGatt gatt,
-                                         BluetoothGattCharacteristic characteristic, int status) {
+        public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 getChartacteristicValue(characteristic);
             } else {
@@ -117,8 +116,7 @@ public class BleService extends Service {
         }
 
         @Override
-        public void onCharacteristicChanged(BluetoothGatt gatt,
-                                            BluetoothGattCharacteristic characteristic) {
+        public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
         }
 
@@ -151,9 +149,7 @@ public class BleService extends Service {
     };
 
     @SuppressLint("NewApi")
-    private void getChartacteristicValue(
-            BluetoothGattCharacteristic characteristic) {
-        // TODO Auto-generated method stub
+    private void getChartacteristicValue(BluetoothGattCharacteristic characteristic) {
         List<BluetoothGattDescriptor> des = characteristic.getDescriptors();
         Intent mIntent = new Intent(ACTION_CHAR_READED);
         if (des.size() != 0) {
@@ -179,8 +175,7 @@ public class BleService extends Service {
     }
 
     @SuppressLint("NewApi")
-    private void broadcastUpdate(String action,
-                                 BluetoothGattCharacteristic characteristic) {
+    private void broadcastUpdate(String action, BluetoothGattCharacteristic characteristic) {
         final Intent intent = new Intent();
         intent.setAction(action);
         final byte[] data = characteristic.getValue();

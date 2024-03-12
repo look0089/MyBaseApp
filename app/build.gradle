@@ -2,124 +2,130 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'org.greenrobot.greendao'
+//    id 'org.greenrobot.greendao'
 }
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "30.0.3"
+    compileSdk rootProject.ext.compileSdkVersion
+
     defaultConfig {
+        namespace "org.jzs.mybaseapp"
         applicationId "org.jzs.mybaseapp"
-        minSdkVersion 22
-        targetSdkVersion 29
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        flavorDimensions "versionCode"
+        multiDexEnabled true
+
         versionCode 1
         versionName "1.0"
-
-        // dex突破65535的限制
-        multiDexEnabled true
 
         ndk {
             //APP的build.gradle设置支持的SO库架构
 //            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
-            abiFilters 'armeabi-v7a'
+            abiFilters 'armeabi'
         }
         packagingOptions {
             exclude 'META-INF/rxjava.properties'
         }
     }
 
-    greendao {
-        schemaVersion 1//版本信息
-        /**
-         * 输出dao的数据库操作实体类文件夹（相对路径 包名+自定义路径名称，包将创建于包名的直接路径下）
-         */
-        daoPackage 'com.jzs.mybaseapp.greendao'
-        /**
-         * greenDao实体类包文件夹
-         */
-        targetGenDir 'src/main/java'
-    }
 
     buildFeatures {
         dataBinding = true
-        // for view binding :
-        // viewBinding = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    kapt {
-        javacOptions {
-            // Increase the max count of errors from annotation processors.
-            // Default is 100.
-            option("-Xmaxerrs", 500)
-        }
-    }
     signingConfigs {
-        release {
+        config {
             storeFile file("mybaseapp.jks")
             storePassword "123456"
             keyAlias "mybaseapp"
             keyPassword "123456"
-        }
-        debug {
-            storeFile file("mybaseapp.jks")
-            storePassword "123456"
-            keyAlias "mybaseapp"
-            keyPassword "123456"
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
 
     buildTypes {
         release {
-            buildConfigField "boolean", "LEO_DEBUG", "false"
             minifyEnabled false
-            signingConfig signingConfigs.release
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable = false
-            jniDebuggable = false
-            renderscriptDebuggable = false
-            renderscriptOptimLevel = 3
+            zipAlignEnabled true
+            signingConfig signingConfigs.config //for release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.config //for release
         }
     }
-
-    dexOptions {
-        jumboMode = true
-        dexInProcess = false
-        javaMaxHeapSize "4g"
+    buildFeatures {
+        dataBinding = true
     }
-
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
+    kotlin {
+        jvmToolchain(17)
+    }
+    kotlinOptions {
+        jvmTarget = '17'
     }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
     }
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'AndroidManifest.xml'
+        exclude 'META-INF/MANIFEST.MF'
+    }
+
+    applicationVariants.all { variant ->
+        println("Variant Name: ${variant.name}")
+        println("Build Type: ${variant.buildType.name}")
+        println("Flavor Name: ${variant.flavorName ?: 'None'}")
+
+        // 访问合并的产品风味信息
+        def mergedFlavor = variant.mergedFlavor
+        println("Application ID: ${mergedFlavor.applicationId}")
+        println("Version Code: ${mergedFlavor.versionCode}")
+        println("Version Name: ${mergedFlavor.versionName}")
+//        variant.outputs.all { output ->
+//            def versionName = variant.versionName
+//            def flavorName = variant.flavorName ?: ""
+//            def outputName = "release/办公协同_${flavorName}_${versionName}.apk"
+//            outputFileName = outputName
+//        }
+    }
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
+    if (project.plugins.hasPlugin("com.android.application")) {
+        implementation fileTree(include: ["*.aar"], dir: rootDir.absolutePath + '/aar_module/libs')
+    }
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'com.google.android:flexbox:0.3.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'org.greenrobot:eventbus:3.1.1'
+
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
     api 'com.github.bumptech.glide:glide:4.11.0'
     kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
-    //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
 
     //rx
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
@@ -129,12 +135,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
 
-    //协程
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0'
 
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
@@ -143,7 +145,7 @@ dependencies {
     //通用TexdView、button
     implementation 'com.github.lygttpod:SuperTextView:2.0.8'
     //下载进度监听
-    implementation 'me.jessyan:progressmanager:1.3.3'
+//    implementation 'me.jessyan:progressmanager:1.3.3'
     //图片选择
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
     //腾讯地图
@@ -152,32 +154,29 @@ dependencies {
     //曲线图
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     //数据库
-    implementation 'org.greenrobot:greendao:3.3.0'
+//    implementation 'org.greenrobot:greendao:3.3.0'
     //粒子
-    implementation 'com.plattysoft.leonids:LeonidsLib:1.3.2'
+//    implementation 'com.plattysoft.leonids:LeonidsLib:1.3.2'
+    implementation files('libs/LeonidsLib-1.3.2.jar')
     //检测模拟器
-    implementation 'com.lahm.library:easy-protector-release:1.0.4'
-
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+//    implementation 'com.lahm.library:easy-protector-release:1.0.4'
+    implementation files('libs/easy-protector-release-1.0.4.jar')
     //喜马拉雅
     implementation files('libs/XmDownload_1.6.jar')
     implementation files('libs/TingPhoneOpenSDK_6.1.8.jar')
 
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
-    implementation(name: 'opencvlib-release', ext: 'aar')
     api project(':date_time_picker')
 
-    //视频播放器
-    implementation 'com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-java:v8.1.3-jitpack'
-    implementation 'com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-ex_so:v8.1.3-jitpack'
+    //播放器
+//    implementation(name: 'gsyVideoPlayer-base-v8.1.3-jitpack', ext: 'aar')
+//    implementation(name: 'gsyVideoPlayer-ex_so-v8.1.3-jitpack', ext: 'aar')
+//    implementation(name: 'gsyVideoPlayer-java-v8.1.3-jitpack', ext: 'aar')
+//    implementation(name: 'gsyVideoPlayer-proxy_cache-v8.1.3-jitpack', ext: 'aar')
+//    implementation(name: 'GSYIjkJava-1.0.0', ext: 'aar')
 
 //    implementation 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v5.0.2'
 //    implementation 'com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-ex_so:v5.0.2'
 //    implementation "com.shuyu:gsyvideoplayer-androidvideocache:5.0.2"
 //    implementation 'tv.danmaku.ijk.media:ijkplayer-java:0.8.8'
-}
-
-//tinker配置
-configurations.all {
-    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }

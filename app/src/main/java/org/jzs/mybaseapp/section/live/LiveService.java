@@ -1,7 +1,6 @@
 package org.jzs.mybaseapp.section.live;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
@@ -24,7 +23,7 @@ import androidx.core.app.NotificationCompat;
 
 public class LiveService extends Service {
     public static final String TAG = "LiveService";
-
+    public static int time = 0;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -39,7 +38,6 @@ public class LiveService extends Service {
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            // TODO Auto-generated method stub
             Message message = new Message();
             message.what = 1;
             mHandler.sendMessage(message);

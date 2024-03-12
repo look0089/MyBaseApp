@@ -22,6 +22,7 @@ import org.jzs.mybaseapp.R;
 import org.jzs.mybaseapp.common.base.EventBusEntity;
 import org.jzs.mybaseapp.databinding.ActivityAnimeBinding;
 import org.jzs.mybaseapp.section.weightdemo.anime.view.CursorView;
+import org.jzs.mybaseapp.section.weightdemo.anime.view.LoadingButton;
 import org.jzs.mybaseapp.section.weightdemo.anime.view.RemoteControlMenu;
 import org.jzs.mybaseapp.section.weightdemo.anime.view.WaveHelper;
 
@@ -62,6 +63,13 @@ public class AnimeActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
         initPlayBtn();
         initWave(0.5f);
+        LoadingButton viewById = findViewById(R.id.btn_load);
+        viewById.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewById.startLoading();
+            }
+        });
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
